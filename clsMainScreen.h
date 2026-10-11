@@ -6,6 +6,7 @@
 #include"clsAddNewClientScreen.h"
 #include"clsDeleteClientScreen.h"
 #include"clsUpdateClientScreen.h"
+#include"clsFindClientScreen.h"
 #include <iomanip>
 
 
@@ -63,7 +64,7 @@ private:
 
     static void _ShowFindClientScreen()
     {
-        cout << "\nFind Client Screen Will be here...\n";
+        clsFindClientScreen::ShowFindClientScreen();
 
     }
 

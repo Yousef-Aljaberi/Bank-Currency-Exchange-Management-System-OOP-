@@ -6,12 +6,6 @@
 #include<iomanip>
 using namespace std;
 
-
-
-
-
-
-
 void PrintClientBalanceLine(clsBankClient Client)
 {
 	cout << "| " << left << setw(15) << Client.AccountNumber();
