@@ -61,8 +61,6 @@ public:
 		SaveResult = NewClient.Save();
 		switch (SaveResult)
 		{
-		case clsBankClient::enSaveResults::svFaildAccountNumberExists:
-
 		case clsBankClient::enSaveResults::svSucceeded:
 			cout << "\nAccount Updated Successfully :-)\n";
 			_PrintClient(NewClient);

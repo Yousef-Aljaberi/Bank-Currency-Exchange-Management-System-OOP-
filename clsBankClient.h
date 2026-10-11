@@ -267,8 +267,22 @@ public:
 		return ToatlBalance;
 	}
 
+	//Deposit 
+	void Deposit(float Amount)
+	{
+		_AccountBalance += Amount;
+		Save();
+	}
 
-
+	//Withdraw
+	bool Withdraw(float Amount)
+	{
+		if (Amount > _AccountBalance)
+			return false;
+		_AccountBalance -= Amount;
+		Save();
+		return true;
+	}
 
 };
 
