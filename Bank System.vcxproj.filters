@@ -23,6 +23,9 @@
     <Text Include="Clients.txt">
       <Filter>Header Files</Filter>
     </Text>
+    <Text Include="Users.txt">
+      <Filter>Header Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsBankClient.h">
@@ -77,6 +80,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="clsManageUsersScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clsAddUserScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clsUser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
