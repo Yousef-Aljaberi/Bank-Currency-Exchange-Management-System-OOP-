@@ -2,6 +2,7 @@
 #include<iostream>
 #include"clsInputValidate.h"
 #include"clsScreen.h"
+#include"clsUsersListScreen.h"
 
 class clsManageUsersScreen:protected clsScreen
 {
@@ -15,7 +16,7 @@ private:
 	enum enManageUsersMenueOption { eListUsers = 1, eAddUser = 2, eDeleteUser = 3, eUpdateUser = 4, eFindUser = 5, eMainMenu = 6 };
 	static void _ShowListUsersScreen()
 	{
-		cout << "list screen will be here";
+		clsListUsersScreen::ShowUsersList();
 	}
 
 	static void _GoBackToManageUsersMenue()

@@ -83,7 +83,7 @@ private:
             string Line;
             for (clsUser User : vUsers)
             {
-                if (User.MarkForDelete() == false)
+                if (User.MarkedForDeleted() == false)
                 {
                     Line = _ConverUserObjectToLine(User);
                     MyFile << Line << endl;
@@ -164,6 +164,7 @@ public:
     {
         return _MarkedForDelete;
     }
+
     bool IsEmpty()
     {
         return (_Mode == enMode::EmptyMode);
