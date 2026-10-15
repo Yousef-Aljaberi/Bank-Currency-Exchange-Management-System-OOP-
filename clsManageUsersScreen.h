@@ -4,6 +4,7 @@
 #include"clsScreen.h"
 #include"clsUsersListScreen.h"
 #include"clsAddNewUserScreen.h"
+#include"clsDeleteUserScreen.h"
 
 class clsManageUsersScreen:protected clsScreen
 {
@@ -34,7 +35,7 @@ private:
 	
 	static void _ShowDeleteUserScreen()
 	{
-		cout << "\nDelete screen will be here";
+		clsDeleteUserScreen::ShowDeleteUserScreen();
 	}
 
 	static void _ShowUpdateUserScreen()

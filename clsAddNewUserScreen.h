@@ -101,12 +101,7 @@ class clsAddNewUserScreen:protected clsScreen
 			Permissions += clsUser::enPermissions::pManageUsers;
 		}
 
-		cout << "\nShow Login Register? y/n? ";
-		cin >> Answer;
-		if (Answer == 'y' || Answer == 'Y')
-		{
-			Permissions += clsUser::enPermissions::pLoginRigester;
-		}
+
 
 		return Permissions;
 
