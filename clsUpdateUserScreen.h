@@ -29,7 +29,23 @@ private:
 
 	}
 
-	static int _ReadPermissionsToSet() {
+	
+	static void _PrintUser(clsUser User)
+	{
+		cout << "\nUser Card:";
+		cout << "\n___________________";
+		cout << "\nFirstName   : " << User.FirstName;
+		cout << "\nLastName    : " << User.LastName;
+		cout << "\nFull Name   : " << User.FullName();
+		cout << "\nEmail       : " << User.Email;
+		cout << "\nPhone       : " << User.Phone;
+		cout << "\nUser Name   : " << User.UserName;
+		cout << "\nPassword    : " << User.Password;
+		cout << "\nPermissions : " << User.Permissions;
+		cout << "\n___________________\n";
+	}
+	static int _ReadPermissionsToSet() 
+	{
 		int Permissions = 0;
 		char Answer = 'n';
 		cout << "\nDo you want to give full access? y/n? ";
@@ -92,20 +108,7 @@ private:
 		return Permissions;
 
 	}
-	static void _PrintUser(clsUser User)
-	{
-		cout << "\nUser Card:";
-		cout << "\n___________________";
-		cout << "\nFirstName   : " << User.FirstName;
-		cout << "\nLastName    : " << User.LastName;
-		cout << "\nFull Name   : " << User.FullName();
-		cout << "\nEmail       : " << User.Email;
-		cout << "\nPhone       : " << User.Phone;
-		cout << "\nUser Name   : " << User.UserName;
-		cout << "\nPassword    : " << User.Password;
-		cout << "\nPermissions : " << User.Permissions;
-		cout << "\n___________________\n";
-	}
+
 public: 
 	static void ShowUpdateUserScreen()
 	{
