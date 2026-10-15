@@ -16,15 +16,19 @@ private:
 
 		do
 		{
+			if (LoginFail)
+			{
+				cout << "\nInvalid UserName/Password! \n\n";
+			}
 			cout << "\nPlease enter username: ";
 			UserName = clsInputValidate::ReadString();
 
 			cout << "\nPlease enter passowrd: ";
 			Password = clsInputValidate::ReadString();
 
-			clsUser User = clsUser::Find(UserName, Password);
+			 CurrentUser = clsUser::Find(UserName, Password);
 
-			LoginFail = User.IsEmpty();
+			LoginFail = CurrentUser.IsEmpty();
 
 		} while (LoginFail);
 
@@ -36,6 +40,8 @@ private:
 public:
 	static void ShowLoginScreen()
 	{
+		system("cls");
+
 		_DrawScreenHeader("\t Login Screen");
 
 		_Login();

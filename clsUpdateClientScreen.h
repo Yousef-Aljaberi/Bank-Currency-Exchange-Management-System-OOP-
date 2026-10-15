@@ -45,6 +45,11 @@ public:
 
 	static void ShowUpdateClientScreen()
 	{
+		if (!CheckAccessRights(clsUser::enPermissions::pUpdateClients))
+		{
+			return;  //this will exit from function
+		}
+
 		_DrawScreenHeader("\t Update Client Screen");
 
 		cout << "Please enter account number: \n";

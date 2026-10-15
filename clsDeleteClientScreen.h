@@ -22,9 +22,16 @@ class clsDeleteClientScreen:protected clsScreen
 public:
 	static void ShowDeleteClientScreen()
 	{
+		if (!CheckAccessRights(clsUser::enPermissions::pAddNewClient))
+		{
+			return;  //this will exit from function
+		}
+
 		_DrawScreenHeader("\tDelete Client Screen");
+
 		cout << "Please Enter Account Number: ";
 		string AccountNumber = clsInputValidate::ReadString();
+
 		while (!clsBankClient::IsClientExist(AccountNumber))
 		{
 			cout << "\nAccount Number is Not Found, choose another one:  ";
@@ -32,10 +39,13 @@ public:
 		}
 
 		clsBankClient Client = clsBankClient::Find(AccountNumber);
+
 		_PrintClient(Client);
+
 		char answer;
 		cout << "Are you sure you want to delete this client? y/n?  ";
 		cin >> answer;
+
 		if (tolower(answer) == 'y')
 		{
 			if (Client.Delete())
@@ -43,6 +53,7 @@ public:
 				cout << "\nClient Deleted Successfully :-)" << endl;
 				_PrintClient(Client);
 			}
+
 			else
 			{
 				cout << "\n Error Client Was not Deleted\n";
