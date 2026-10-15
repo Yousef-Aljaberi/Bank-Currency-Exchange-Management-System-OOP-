@@ -156,6 +156,7 @@
     <ClInclude Include="clsDepositScreen.h" />
     <ClInclude Include="clsFindClientScreen.h" />
     <ClInclude Include="clsInputValidate.h" />
+    <ClInclude Include="clsUpdateUserScreen.h" />
     <ClInclude Include="clsUsersListScreen.h" />
     <ClInclude Include="clsMainScreen.h" />
     <ClInclude Include="clsManageUsersScreen.h" />

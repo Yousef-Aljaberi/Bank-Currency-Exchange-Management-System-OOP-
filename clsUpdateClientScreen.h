@@ -61,7 +61,7 @@ public:
 
 		char answer;
 
-		cout << "Are you sure you want to delete this client? y/n?  ";
+		cout << "Are you sure you want to update this client? y/n?  ";
 		cin >> answer;
 
 		if (answer == 'y'||answer=='Y')

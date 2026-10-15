@@ -113,7 +113,10 @@
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
     <ClInclude Include="clsDeleteUserScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Screens\UserScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="clsUpdateUserScreen.h">
+      <Filter>Header Files\Screens\UserScreens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
