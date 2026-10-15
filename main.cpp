@@ -1,16 +1,11 @@
 #include<iostream>
-#include"clsBankClient.h"
-#include"clsInputValidate.h"
-#include"clsUtil.h"
-#include"clsMainScreen.h"
-#include<iomanip>
+#include"clsLoginScreen.h"
 using namespace std;
 
 
 int main()
 {
-	clsMainScreen::ShowMainMenue();
-	cout << endl;
+	clsLoginScreen::ShowLoginScreen();
 	system("pause");
 	return 0;
 }

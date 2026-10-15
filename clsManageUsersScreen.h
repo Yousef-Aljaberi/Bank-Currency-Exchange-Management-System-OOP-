@@ -88,7 +88,7 @@ private:
 
 		}
 		}
-	}
+	} 
 
 public:
 	static void ShowManageUsersMenue()
