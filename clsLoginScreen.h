@@ -8,18 +8,31 @@
 class clsLoginScreen:protected clsScreen
 {
 private:
-	static void _Login()
+	static bool _Login()
 	{
 		bool LoginFail = false;
 		string UserName, Password;
 
+		short FaildLoginCount = 0;
+		short NumberOfTrayLogin = 3;
+		bool LockAccount = false;
 
 		do
 		{
 			if (LoginFail)
 			{
-				cout << "\nInvalid UserName/Password! \n\n";
+				 FaildLoginCount++;
+
+				cout << "\nInvalid UserName/Password! \n";
+				cout << "You Have " << NumberOfTrayLogin - FaildLoginCount << " Trail(s) to login.\n\n";
 			}
+
+			if (FaildLoginCount == NumberOfTrayLogin)
+			{
+				cout << "Your Locked after " << FaildLoginCount << " faild trails\n\n";
+				return false;
+			}
+			
 			cout << "\nPlease enter username: ";
 			UserName = clsInputValidate::ReadString();
 
@@ -29,22 +42,25 @@ private:
 			 CurrentUser = clsUser::Find(UserName, Password);
 
 			LoginFail = CurrentUser.IsEmpty();
+			
 
-		} while (LoginFail);
-
+		} while (LoginFail && (FaildLoginCount < NumberOfTrayLogin));
+		
+		
 		clsMainScreen::ShowMainMenue();
+		return true;
 
 	}
 
 
 public:
-	static void ShowLoginScreen()
+	static bool  ShowLoginScreen()
 	{
 		system("cls");
 
 		_DrawScreenHeader("\t Login Screen");
 
-		_Login();
+		return _Login();
 	}
 };
 

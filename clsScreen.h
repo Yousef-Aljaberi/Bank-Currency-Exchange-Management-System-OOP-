@@ -1,6 +1,7 @@
 #pragma once
 #include"clsUser.h"
 #include"Global.h"
+#include"clsDate.h"
 #include <iostream>
 
 
@@ -18,6 +19,8 @@ protected :
             cout << "\n\t\t\t\t\t  " << SubTitle;
         }
         cout << "\n\t\t\t\t\t______________________________________\n\n";
+
+        ShowCurrentUserAndDate();
     }
 
    static bool CheckAccessRights(clsUser::enPermissions Permission)
@@ -28,11 +31,18 @@ protected :
             cout << "\n\n\t\t\t\t\t  Access Denied! Contact your Admin";
             cout << "\n\t\t\t\t\t______________________________________\n\n";
 
+            ShowCurrentUserAndDate();
+
             return false;
         }
 
         return true;
     }
-
+   
+   static void ShowCurrentUserAndDate()
+   {
+       cout << "\t\t\t\t\t User: " << CurrentUser.UserName;
+       cout << "\n\t\t\t\t\tDate: " << clsDate::DateToString(clsDate()) << "\n";
+   }
 };
 
