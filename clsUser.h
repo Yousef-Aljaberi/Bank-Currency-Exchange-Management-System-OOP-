@@ -1,6 +1,7 @@
 #pragma once
 #include"clsPerson.h"
 #include"clsString.h"
+#include"clsDate.h"
 #include<fstream>
 #include<vector>
 #include<string>
@@ -116,6 +117,19 @@ private:
     void _AddNew()
     {
         _AddNewDataLineToFile(_ConverUserObjectToLine(*this));
+    }
+    string _PrepaperSystemDate()
+    {
+        string Seprator = "#//#";
+        string LoginRigister = "";
+
+        LoginRigister = clsDate::GetSystemDateTimeString() + Seprator;
+        LoginRigister += _UserName + Seprator;
+        LoginRigister += _Password + Seprator;
+        LoginRigister += to_string(_Permissions);
+
+        return LoginRigister;
+
     }
 
 public:
@@ -299,6 +313,21 @@ public:
             return false;
     }
 
+    void SaveLoginRegister()
+    {
+        string RegisterLine = _PrepaperSystemDate();
+
+        fstream MyFile;
+        
+        MyFile.open("LoginRegister.txt", ios::in | ios::app);
+        
+        if (MyFile.is_open())
+        {
+            MyFile << RegisterLine << endl;
+
+            MyFile.close();
+        }
+    }
 
 
 };
