@@ -48,15 +48,20 @@ private:
 	{
 		int Permissions = 0;
 		char Answer = 'n';
+
 		cout << "\nDo you want to give full access? y/n? ";
 		cin >> Answer;
+
 		if (Answer == 'y' || Answer == 'Y')
 		{
 			return -1;
 		}
+
 		cout << "\nDo you want to give access to : \n ";
+
 		cout << "\nShow Client List? y/n? ";
 		cin >> Answer;
+
 		if (Answer == 'y' || Answer == 'Y')
 		{
 			Permissions += clsUser::enPermissions::pListClients;
@@ -64,12 +69,14 @@ private:
 
 		cout << "\nAdd New Client? y/n? ";
 		cin >> Answer;
+
 		if (Answer == 'y' || Answer == 'Y')
 		{
 			Permissions += clsUser::enPermissions::pAddNewClient;
 		}
 		cout << "\nDelete Client? y/n? ";
 		cin >> Answer;
+
 		if (Answer == 'y' || Answer == 'Y')
 		{
 			Permissions += clsUser::enPermissions::pDeleteClient;
@@ -77,6 +84,7 @@ private:
 
 		cout << "\nUpdate Client? y/n? ";
 		cin >> Answer;
+
 		if (Answer == 'y' || Answer == 'Y')
 		{
 			Permissions += clsUser::enPermissions::pUpdateClients;
@@ -84,6 +92,7 @@ private:
 
 		cout << "\nFind Client? y/n? ";
 		cin >> Answer;
+
 		if (Answer == 'y' || Answer == 'Y')
 		{
 			Permissions += clsUser::enPermissions::pFindClient;
@@ -91,6 +100,7 @@ private:
 
 		cout << "\nTransactions? y/n? ";
 		cin >> Answer;
+
 		if (Answer == 'y' || Answer == 'Y')
 		{
 			Permissions += clsUser::enPermissions::pTranactions;
@@ -98,15 +108,21 @@ private:
 
 		cout << "\nManage Users? y/n? ";
 		cin >> Answer;
+
 		if (Answer == 'y' || Answer == 'Y')
 		{
 			Permissions += clsUser::enPermissions::pManageUsers;
 		}
+		
+		cout << "\nShow Login Register List? y/n? ";
+		cin >> Answer;
 
-
+		if (Answer == 'y' || Answer == 'Y')
+		{
+			Permissions += clsUser::enPermissions::pLoginRegister;
+		}
 
 		return Permissions;
-
 	}
 
 public: 

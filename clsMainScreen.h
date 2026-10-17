@@ -14,7 +14,6 @@
 #include"clsLoginRegisterScreen.h"
 #include <iomanip>
 
-
 using namespace std;
 
 class clsMainScreen :protected clsScreen
