@@ -5,8 +5,8 @@
 #include"clsUtil.h"
 #include<iomanip>
 
-class clsClientListScreen:public clsScreen
-{protected:
+class clsClientListScreen:protected clsScreen
+{private:
 	static void _PrintClientRecordLine(clsBankClient Client)
     {
 

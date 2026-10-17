@@ -46,7 +46,7 @@ private:
 
 		} while (LoginFail && (FaildLoginCount < NumberOfTrayLogin));
 		
-		CurrentUser.SaveLoginRegister();
+		CurrentUser.RegisterLogIn();
 		clsMainScreen::ShowMainMenue();
 		return true;
 
