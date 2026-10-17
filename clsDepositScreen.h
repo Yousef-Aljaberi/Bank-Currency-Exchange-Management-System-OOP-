@@ -66,8 +66,9 @@ public:
 				Client.Deposit(Amount);
 				cout << "\n Amount  Deposited successfully :-)\n";
 				cout << "\nNew Balance is: " << Client.AccountBalance;
-				cout << "\nErorr! Cannot Deposit.";
+				
 		}
+
 	}
 };
 

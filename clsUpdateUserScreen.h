@@ -119,7 +119,7 @@ private:
 
 		if (Answer == 'y' || Answer == 'Y')
 		{
-			Permissions += clsUser::enPermissions::pLoginRegister;
+			Permissions += clsUser::enPermissions::pShowLoginRegister;
 		}
 
 		return Permissions;

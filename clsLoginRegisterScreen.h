@@ -24,7 +24,7 @@ public:
 
     static void ShowLoginRegisterScreen()
     {
-        if (!CheckAccessRights(clsUser::enPermissions::pLoginRegister))
+        if (!CheckAccessRights(clsUser::enPermissions::pShowLoginRegister))
         {
             return;
         }
