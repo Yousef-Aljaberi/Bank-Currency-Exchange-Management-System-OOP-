@@ -99,7 +99,20 @@ private:
 		_AddNewDataLineToFile(_ConverClientObjectToLineData(*this));
 	}
 
+	string _PrepareTransfermLog(clsBankClient DestinationClient, float Amount, string Seperator = "#//#")
+	{
+		string TransferLog;
 
+	    TransferLog = clsDate::GetSystemDateTimeString() + Seperator;
+		TransferLog += this->AccountNumber() + Seperator;
+		TransferLog += DestinationClient.AccountNumber() + Seperator;
+		TransferLog += to_string(Amount) + Seperator;
+		TransferLog += to_string(this->AccountBalance)+ Seperator;
+		TransferLog += to_string(DestinationClient.AccountBalance) + Seperator;
+		TransferLog += CurrentUser.UserName;
+
+		return TransferLog;
+	}
 public:
 
 	clsBankClient(enMode Mode, string FirstName, string LastName, string Email, string PhoneNumber, string AccountNumber, string PinCode, float AccountBalance)
@@ -298,5 +311,19 @@ public:
 
 	}
 
+	void TransferLog(clsBankClient DestinamtionClinet, float Amount)
+	{
+		string TransferLog = _PrepareTransfermLog(DestinamtionClinet, Amount);
+		
+		fstream MyFile;
+		
+		MyFile.open("TransferLog.txt", ios::out | ios::app);
+
+		if (MyFile.is_open())
+		{
+			MyFile << TransferLog << endl;
+			MyFile.close();
+		}
+	}
 };
 

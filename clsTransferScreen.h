@@ -7,10 +7,11 @@ class clsTransferScreen:protected clsScreen
 {
 private:
 
-	static string _ReadAccountNumber()
+	static string _ReadAccountNumber(string Message)
 	{
 		string AccountNumber;
-		cout << "\nPlease Enter Account to Transfer From: ";
+
+		cout << Message;
 		AccountNumber = clsInputValidate::ReadString();
 
 		while (!clsBankClient::IsClientExist(AccountNumber))
@@ -55,13 +56,13 @@ public:
 		_DrawScreenHeader("\t Transfer Screent");
 
 		
-		clsBankClient Client1 = clsBankClient::Find(_ReadAccountNumber());
-		_PrintClient(Client1);
+		clsBankClient SourceClient = clsBankClient::Find(_ReadAccountNumber("\nPlease Enter Account to Transfer From: "));
+		_PrintClient(SourceClient);
 
-		clsBankClient Client2 = clsBankClient::Find(_ReadAccountNumber());
-		_PrintClient(Client2);
+		clsBankClient DestinationClient = clsBankClient::Find(_ReadAccountNumber("\nPlease Enter Account to Transfer To: "));
+		_PrintClient(DestinationClient);
 
-		float Amount = ReadAmount(Client1);
+		float Amount = ReadAmount(SourceClient);
 
 		char Answer;
 
@@ -71,10 +72,10 @@ public:
 
 		if (Answer == 'y' || Answer == 'Y')
 		{
-			if (Client1.Transfer(Amount, Client2))
+			if (SourceClient.Transfer(Amount, DestinationClient))
 			{
 				cout << "\nDone successfully :-)\n\n";
-
+				SourceClient.TransferLog(DestinationClient, Amount);
 			}
 			else
 			{
@@ -82,8 +83,8 @@ public:
 			}
 
 
-			_PrintClient(Client1);
-			_PrintClient(Client2);
+			_PrintClient(SourceClient);
+			_PrintClient(DestinationClient);
 		}
 
 	}
