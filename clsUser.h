@@ -2,6 +2,7 @@
 #include"clsPerson.h"
 #include"clsString.h"
 #include"clsDate.h"
+#include"clsUtil.h"
 #include<fstream>
 #include<vector>
 #include<string>
@@ -20,7 +21,8 @@ private:
     static clsUser _ConvertLineToUserObject(string Line,string Seperator="#//#")
     {
         vector<string> vUserData = clsString::Split(Line, Seperator);
-        return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], vUserData[3], vUserData[4], vUserData[5], stoi(vUserData[6]));
+        return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2], 
+            vUserData[3], vUserData[4], clsUtil::DecryptText(vUserData[5]), stoi(vUserData[6]));
 
     }
     static string _ConverUserObjectToLine(clsUser User, string Seperator = "#//#")
@@ -32,7 +34,7 @@ private:
         UserRecord += User.Email + Seperator;
         UserRecord += User.Phone + Seperator;
         UserRecord += User.UserName + Seperator;
-        UserRecord += User.Password + Seperator;
+        UserRecord += clsUtil::EncryptText(User.Password) + Seperator;
         UserRecord += to_string(User.Permissions);
 
         return UserRecord;
@@ -124,7 +126,7 @@ private:
 
         LoginRecord = clsDate::GetSystemDateTimeString() + Seprator;
         LoginRecord += UserName + Seprator;
-        LoginRecord += Password + Seprator;
+        LoginRecord += clsUtil::EncryptText(Password) + Seprator;
         LoginRecord += to_string(Permissions);
 
         return LoginRecord;

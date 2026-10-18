@@ -134,10 +134,10 @@
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
     <ClInclude Include="clsTransferScreen.h">
-      <Filter>Header Files\Screens</Filter>
+      <Filter>Header Files\Screens\TransactionScreens</Filter>
     </ClInclude>
     <ClInclude Include="clsTransferLogScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Screens\TransactionScreens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
