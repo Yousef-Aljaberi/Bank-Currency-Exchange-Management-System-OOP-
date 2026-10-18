@@ -7,20 +7,22 @@
 #include"clsWithdrawScreen.h"
 #include"clsTotalBalancesScreen.h"
 #include"clsTransferScreen.h"
+#include "clsTransferLogScreen.h"
 
 class clsTransactionsScreen:protected clsScreen
 {
 private:
-    enum enTransactionsMenuOption { eDeposit = 1, eWithdraw = 2, eShowTotalBalance = 3, eTransfer=4, eMainMenu = 5 };
+    enum enTransactionsMenuOption { eDeposit = 1, eWithdraw = 2, 
+        eShowTotalBalance = 3, eTransfer=4, eTransferLog = 5, eShowMainMenue = 6};
 
     static short _ReadTransactionMenuOption()
     {
-        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 5]? ";
-        short Choice = clsInputValidate::ReadShortNumberBetween(1, 5, "Enter Number between 1 to 5? ");
+        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 6]? ";
+        short Choice = clsInputValidate::ReadShortNumberBetween(1, 6, "Enter Number between 1 to 6? ");
         return Choice;
     }
 
-    static void _GoBackToMainMenu()
+    static void _GoBackToTransactionsMenue()
     {
         cout << setw(37) << left << "" << "\n\tPress any key to go back to Main Menue...\n";
 
@@ -47,6 +49,13 @@ private:
     {
         clsTransferScreen::ShowTransferScreen();
     }
+
+    static void _ShowTransferLogScreen()
+    {
+        clsTransferLogScreen::ShowTransferLogScreen();
+    }
+
+
    static void _PerformTransacionsMenuOptions(enTransactionsMenuOption Option)
     {
         switch (Option)
@@ -55,7 +64,7 @@ private:
         {
             system("cls");
             _ShowDepositScreen();
-            _GoBackToMainMenu();
+            _GoBackToTransactionsMenue();
             break;
         }
 
@@ -63,7 +72,7 @@ private:
         {
             system("cls");
             _ShowWithdrawScreen();
-            _GoBackToMainMenu();
+            _GoBackToTransactionsMenue();
             break;
         }
         
@@ -71,20 +80,27 @@ private:
         {
             system("cls");
             _ShowTotalBalanceScreen();
-            _GoBackToMainMenu();
+            _GoBackToTransactionsMenue();
         } 
         
         case enTransactionsMenuOption::eTransfer:
         {
             system("cls");
             _ShowTransferScreen();
-            _GoBackToMainMenu();
+            _GoBackToTransactionsMenue();
         }
-        case enTransactionsMenuOption::eMainMenu:
-        {
+        case enTransactionsMenuOption::eTransferLog: {
             system("cls");
+            _ShowTransferLogScreen();
+            _GoBackToTransactionsMenue;
+            break;
         }
 
+        case enTransactionsMenuOption::eShowMainMenue: {
+            system("cls");
+
+            break;
+        }
         }
     }
 public:
@@ -105,7 +121,8 @@ public:
         cout << setw(37) << left << "" << "\t[2] Withdraw.\n";
         cout << setw(37) << left << "" << "\t[3] Total Balance.\n";
         cout << setw(37) << left << "" << "\t[4] Transfer.\n";
-        cout << setw(37) << left << "" << "\t[5] Mian Menu.\n";
+        cout << setw(37) << left << "" << "\t[5] Transfer Log.\n";
+        cout << setw(37) << left << "" << "\t[6] Main Menue.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 
         _PerformTransacionsMenuOptions((enTransactionsMenuOption)_ReadTransactionMenuOption());

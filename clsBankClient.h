@@ -99,6 +99,26 @@ private:
 		_AddNewDataLineToFile(_ConverClientObjectToLineData(*this));
 	}
 
+	struct stTrnsferLogRecord;
+
+	static stTrnsferLogRecord _ConvertTransferLogLineToRecord(string Line, string Seperator = "#//#")
+	{
+		stTrnsferLogRecord TrnsferLogRecord;
+
+		vector <string> vTrnsferLogRecordLine = clsString::Split(Line, Seperator);
+		TrnsferLogRecord.DateTime = vTrnsferLogRecordLine[0];
+		TrnsferLogRecord.SourceAccountNumber = vTrnsferLogRecordLine[1];
+		TrnsferLogRecord.DestinationAccountNumber = vTrnsferLogRecordLine[2];
+		TrnsferLogRecord.Amount = stod(vTrnsferLogRecordLine[3]);
+		TrnsferLogRecord.srcBalanceAfter = stod(vTrnsferLogRecordLine[4]);
+		TrnsferLogRecord.destBalanceAfter = stod(vTrnsferLogRecordLine[5]);
+		TrnsferLogRecord.UserName = vTrnsferLogRecordLine[6];
+
+		return TrnsferLogRecord;
+
+	}
+
+
 	string _PrepareTransferLogRecord(clsBankClient DestinationClient, float Amount, string Seperator = "#//#")
 	{
 		string TransferLog;
@@ -128,7 +148,23 @@ private:
 			MyFile.close();
 		}
 	}
+
+	//------------------------------------------------------
+
 public:
+
+	struct stTrnsferLogRecord
+	{
+		string DateTime;
+		string SourceAccountNumber;
+		string DestinationAccountNumber;
+		float Amount;
+		float srcBalanceAfter;
+		float destBalanceAfter;
+		string UserName;
+
+	};
+
 
 	clsBankClient(enMode Mode, string FirstName, string LastName, string Email, string PhoneNumber, string AccountNumber, string PinCode, float AccountBalance)
 		:clsPerson(FirstName, LastName, Email, PhoneNumber) 
@@ -295,14 +331,42 @@ public:
 		return ToatlBalance;
 	}
 
-	//Deposit 
+	//tranfers list
+	static  vector <stTrnsferLogRecord> GetTransfersLogList()
+	{
+
+		vector <stTrnsferLogRecord> vTrnsferLogRecord;
+		fstream MyFile;
+
+		MyFile.open("TransferLog.txt", ios::in);//read Mode
+
+		if (MyFile.is_open())
+		{
+			string Line;
+			stTrnsferLogRecord  TrnsferLogRecord;
+			while (getline(MyFile, Line))
+			{
+
+				TrnsferLogRecord = _ConvertTransferLogLineToRecord(Line);
+
+				vTrnsferLogRecord.push_back(TrnsferLogRecord);
+
+			}
+			MyFile.close();
+
+		}
+
+
+		return vTrnsferLogRecord;
+
+	}
+
+
 	void Deposit(float Amount)
 	{
 		_AccountBalance += Amount;
 		Save();
 	}
-
-	//Withdraw
 	bool Withdraw(float Amount)
 	{
 		if (Amount > _AccountBalance)
