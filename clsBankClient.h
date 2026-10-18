@@ -99,7 +99,7 @@ private:
 		_AddNewDataLineToFile(_ConverClientObjectToLineData(*this));
 	}
 
-	string _PrepareTransfermLog(clsBankClient DestinationClient, float Amount, string Seperator = "#//#")
+	string _PrepareTransferLogRecord(clsBankClient DestinationClient, float Amount, string Seperator = "#//#")
 	{
 		string TransferLog;
 
@@ -112,6 +112,21 @@ private:
 		TransferLog += CurrentUser.UserName;
 
 		return TransferLog;
+	}
+
+	void _RegisterTransfersLog(float Amount,clsBankClient DestinamtionClinet, string UserName)
+	{
+		string TransferLog = _PrepareTransferLogRecord(DestinamtionClinet, Amount);
+
+		fstream MyFile;
+
+		MyFile.open("TransferLog.txt", ios::out | ios::app);
+
+		if (MyFile.is_open())
+		{
+			MyFile << TransferLog << endl;
+			MyFile.close();
+		}
 	}
 public:
 
@@ -297,7 +312,7 @@ public:
 		return true;
 	}
 
-	bool Transfer(float Amount, clsBankClient& DestinationClient) 
+	bool Transfer(float Amount, clsBankClient& DestinationClient, string UserName)
 	{
 
 		if (Amount > AccountBalance)
@@ -307,23 +322,12 @@ public:
 
 		Withdraw(Amount);
 		DestinationClient.Deposit(Amount);
+		_RegisterTransfersLog(Amount, DestinationClient, UserName);
+
 		return true;
 
 	}
 
-	void TransferLog(clsBankClient DestinamtionClinet, float Amount)
-	{
-		string TransferLog = _PrepareTransfermLog(DestinamtionClinet, Amount);
-		
-		fstream MyFile;
-		
-		MyFile.open("TransferLog.txt", ios::out | ios::app);
-
-		if (MyFile.is_open())
-		{
-			MyFile << TransferLog << endl;
-			MyFile.close();
-		}
-	}
+	
 };
 
