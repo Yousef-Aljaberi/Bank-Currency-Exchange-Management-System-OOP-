@@ -24,7 +24,7 @@ private:
 
     static void _GoBackToTransactionsMenue()
     {
-        cout << setw(37) << left << "" << "\n\tPress any key to go back to Main Menue...\n";
+        cout << setw(37) << left << "" << "\n\tPress any key to go back to Transactions Menue...\n";
 
         system("pause>0");
         ShowTransactionsMenu();

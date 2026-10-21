@@ -23,6 +23,17 @@ private:
 		 return clsCurrency(enMode::UpdateMode, vCurrencyDataRecord[0], vCurrencyDataRecord[1],
 			 vCurrencyDataRecord[2], stof(vCurrencyDataRecord[3]));
 	 }
+	 static string _ConvertCurrencyObjectToDataLine(clsCurrency Currency, string Seprator = "#//#")
+	 {
+		 string CurrencyLine;
+
+		 CurrencyLine = Currency.Country() + Seprator;
+		 CurrencyLine = Currency.CountryCode() + Seprator;
+		 CurrencyLine = Currency.CurrencyName() + Seprator;
+		 CurrencyLine = to_string(Currency.Rate());
+
+		 return CurrencyLine;
+	 }
 
 	 static vector<clsCurrency> _LoadCurrencyDataFromFile()
 	 {
@@ -45,17 +56,10 @@ private:
 		 return vCurrencies;
 	 }
 
-	 static string _ConvertCurrencyObjectToDataLine(clsCurrency Currency, string Seprator = "#//#")
+	 static clsCurrency _GetEmptyObject()
 	 {
-		 string CurrencyLine;
-
-		 CurrencyLine = Currency.Country() + Seprator;
-		 CurrencyLine = Currency.CountryCode() + Seprator;
-		 CurrencyLine = Currency.CurrencyName() + Seprator;
-		 CurrencyLine = to_string(Currency.Rate());
-
-		 return CurrencyLine;
-	}
+		 return clsCurrency(enMode::EmptyMode, "", "", "", 0);
+	 }
 
 	 static void _SaveCurrencyDataToFile(vector<clsCurrency> Currencies)
 	 {
@@ -93,7 +97,7 @@ public:
 		_Mode = Mode;
 		_Country = Country;
 		_CountryCode = CountryCode;
-		_CurrencyName = CountryName;
+		_CurrencyName = CurrencyName;
 		_Rate = Rate;
 	}
 
@@ -122,23 +126,75 @@ public:
 		_Rate = Rate;
 		_Update();
 	}
+
 	float Rate()
 	{
 		return _Rate;
 	}
-	__declspec(property(get = Rate, put = UpdateRate)) float Rate;
+
 
 	static clsCurrency FindByCode(string CountryCode)
 	{
-		vector<clsCurrency> vCurrencies = _LoadCurrencyDataFromFile();
+		CountryCode = clsString::UpperAllString(CountryCode);
 
-		for (clsCurrency C : vCurrencies)
+		fstream MyFile;
+		MyFile.open("Currencies.txt", ios::in);		//read mode
+
+		if (MyFile.is_open())
 		{
-			if (C.CountryCode() == CountryCode)
+			string Line;
+			while (getline(MyFile, Line))
 			{
-				return C;
+				clsCurrency Currency = _ConverCurrencyDataLineToObject(Line);
+
+				if (Currency.CountryCode() == CountryCode)
+				{
+					MyFile.close();
+					return Currency;
+				}
 			}
 		}
+
+		return _GetEmptyObject();
 	}
+
+	static clsCurrency FindByCountry(string Country)
+	{
+		Country = clsString::UpperAllString(Country);
+
+		fstream MyFile;
+		MyFile.open("Currencies.txt", ios::in);		//read mode
+
+		if (MyFile.is_open())
+		{
+			string Line;
+			while (getline(MyFile, Line))
+			{
+				clsCurrency Currency = _ConverCurrencyDataLineToObject(Line);
+
+				if (clsString::UpperAllString(Currency.Country()) == Country)
+				{
+					MyFile.close();
+					return Currency;
+				}
+			}
+		}
+
+		return _GetEmptyObject();
+	}
+
+	static bool IsCurrencyExist(string CountryCode)
+	{
+		clsCurrency Currency = FindByCode(CountryCode);
+
+		return (!Currency.IsEmpty());
+	}
+
+	static vector<clsCurrency> GetCurrenciesList()
+	{
+		return _LoadCurrencyDataFromFile();
+	}
+
+
 };
 

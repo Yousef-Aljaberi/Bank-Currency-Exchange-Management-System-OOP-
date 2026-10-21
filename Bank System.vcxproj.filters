@@ -34,6 +34,9 @@
     <Filter Include="Header Files\Core">
       <UniqueIdentifier>{422dfb82-bc62-4728-b16f-191942c83ff8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Screens\CurrencScreens">
+      <UniqueIdentifier>{fa7ab7a5-3661-406d-b478-a40da7216886}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -143,7 +146,10 @@
       <Filter>Header Files\Screens\TransactionScreens</Filter>
     </ClInclude>
     <ClInclude Include="clsCurrency.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="clsCurrencyMenue.h">
+      <Filter>Header Files\Screens\CurrencScreens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
