@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div align="center">
 
 # 🏦  Bank Management System
@@ -9,15 +10,14 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Language-C++11%2F17-blue.svg" alt="C++">
   <img src="https://img.shields.io/badge/Architecture-Multi--Tier-orange.svg" alt="Architecture">
-  <img src="https://img.shields.io/badge/Security-RBAC%20%26%20Bitmask-green.svg" alt="Security">
-  <img src="https://img.shields.io/badge/License-MIT-purple.svg" alt="License">
+  <img src="https://img.shields.io/badge/Security%20%26%20Bitmask-green.svg" alt="Security">
 </p>
 
 ---
 
 [✨ Overview](#-overview) •
 [🏗️ System Architecture](#️-system-architecture) •
-[🛡️ Security & RBAC](#️-security--role-based-access-control-rbac) •
+[🛡️ Security ](#️-security--role-based-access-control-rbac) •
 [📂 Project Modules](#-project-modules) •
 [🗄️ Data Persistence](#️-data-persistence-layer) •
 [🚀 Getting Started](#-getting-started) •
@@ -60,7 +60,7 @@ The application follows a clean **Multi-Tier Layered Pattern** to ensure high ma
 
 ---
 
-## 🛡️ Security & Role-Based Access Control (RBAC)
+## 🛡️ Security & Role-Based Access Control
 
 Security is deeply integrated into the core architecture using a **Bitmask Permission System**:
 
@@ -138,3 +138,5 @@ g++ -std=c++11 *.cpp -o BankManagementSystem
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Yousif%20Aljaberi-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/yousif-aljaberi-004278408/)
 
 </div>
+=======
+>>>>>>> Stashed changes

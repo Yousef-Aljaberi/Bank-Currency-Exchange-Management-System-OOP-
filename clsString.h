@@ -5,13 +5,18 @@ using namespace std;
 
 class clsString
 {
+
 private:
+
 	string _Value;
+
 public:
+
 	clsString()
 	{
 		_Value = "";
 	}
+
 	clsString(string Value)
 	{
 		_Value = Value;
@@ -36,10 +41,14 @@ public:
 	{
 		return _Value.length();
 	}
+
 	static short Length(string Value)
 	{
 		return Value.length();
 	}
+
+	//_____________________________________________________________
+
 	static void PrintFirstLetterOfEachWors(string text)
 	{
 		bool IsFirstLetter = true;
@@ -61,6 +70,8 @@ public:
 
 	}
 
+	//_____________________________________________________________
+
 	static string UpperFirstLeeterOfEachWord(string text)
 	{
 		bool IsFirstLetter = true;
@@ -81,6 +92,8 @@ public:
 		_Value = UpperFirstLeeterOfEachWord(_Value);
 	}
 
+	//_____________________________________________________________
+
 	static string LowerFirstLetterOfEachWord(string text)
 	{
 		bool IsFirstLetter = true;
@@ -100,6 +113,8 @@ public:
 		_Value = LowerFirstLetterOfEachWord(_Value);
 	}
 
+	//_____________________________________________________________
+
 	static string LowerAllLetterOfString(string text)
 	{
 		for (short i = 0; i < text.length(); i++)
@@ -117,6 +132,26 @@ public:
 		_Value = LowerAllLetterOfString(_Value);
 	}
 
+	//_____________________________________________________________
+
+
+	static string UpperAllString(string S3)
+	{
+
+		for (int i = 0; i < S3.length(); i++)
+		{
+			S3[i] = toupper(S3[i]);
+		}
+		return S3;
+	}
+
+	void UpperAllString() {
+		_Value = UpperAllString(_Value);
+	}
+
+	//______________________________________________
+
+
 	static 	char InvertCharecterCase(char L)
 	{
 		return isupper(L) ? tolower(L) : toupper(L);
@@ -131,10 +166,14 @@ public:
 		return text;
 	}
 
+	//_____________________________________________________________
+
 	void InverAllLettersCase()
 	{
 		_Value = InverAllLettersCase(_Value);
 	}
+
+	//_____________________________________________________________
 
 	static enum enWhatToCount { Capital = 1, Small = 2, All = 3 };
 
@@ -161,6 +200,8 @@ public:
 		return CountSmallCapitalLetters(_Value, WhatToCount);
 	}
 
+	//_____________________________________________________________
+
 	static int  CountLetters(string text, char TargetChar)
 	{
 		int count = 0;
@@ -176,6 +217,8 @@ public:
 	{
 		return CountLetters(_Value, TargetChar);
 	}
+
+	//_____________________________________________________________
 
 	static short CountLetterNoMatchCase(string text, char TargetLetter, bool NoMatchCase = true)
 	{
@@ -203,12 +246,17 @@ public:
 		return  CountLetterNoMatchCase(_Value, TargetLetter, NoMatchCase);
 	}
 
+	//_____________________________________________________________
+
 	static bool IsVowel(char Ch1)
 	{
 		Ch1 = tolower(Ch1);
 		return((Ch1 == 'a') || (Ch1 == 'e') || (Ch1 == 'i') || (Ch1 == 'o') || (Ch1 == 'u'));
 
 	}
+
+	//_____________________________________________________________
+
 	static short CountVowels(string text)
 	{
 		int counter = 0;
@@ -228,6 +276,8 @@ public:
 		return CountVowels(_Value);
 	}
 
+	//_____________________________________________________________
+
 	static void PrintAllVowelsLetter(string text)
 	{
 		cout << "\nVowels Letters in string is/are: ";
@@ -246,6 +296,8 @@ public:
 	{
 		PrintAllVowelsLetter(_Value);
 	}
+
+	//_____________________________________________________________
 
 	static void PrintEachWordOfString(string text)
 	{
@@ -277,6 +329,8 @@ public:
 		PrintEachWordOfString(_Value);
 	}
 
+	//_____________________________________________________________
+
 	static short CountEachWordOfString(string text)
 	{
 		short Count = 0;
@@ -300,11 +354,12 @@ public:
 		}
 		return Count;
 	}
+
 	short CountEachWordOfString()
 	{
 		return  CountEachWordOfString(_Value);
 	}
-
+	//_____________________________________________________________
 
 	static vector<string> Split(string text, string delim)
 	{
@@ -331,6 +386,8 @@ public:
 		return Split(_Value, delim);
 	}
 
+	//_____________________________________________________________
+
 	static string TrimLeft(string text)
 	{
 		for (int i = 0; i < text.length(); i++)
@@ -345,10 +402,13 @@ public:
 
 
 	}
+
 	void TrimLeft()
 	{
 		_Value = TrimLeft(_Value);
 	}
+
+	//_____________________________________________________________
 
 	static string TrimRight(string text)
 	{
@@ -364,19 +424,25 @@ public:
 		return "";
 
 	}
+
 	void TrimRight()
 	{
 		_Value = TrimRight(_Value);
 	}
 
+	//_____________________________________________________________
+
 	static string Trim(string text)
 	{
 		return TrimLeft(TrimRight(text));
 	}
+
 	void Trim()
 	{
 		_Value = Trim(_Value);
 	}
+
+	//_____________________________________________________________
 
 	static string JoinString(vector <string> vString, string delim)
 	{
@@ -401,6 +467,8 @@ public:
 		return S1.substr(0, S1.length() - delim.length());
 	}
 
+	//_____________________________________________________________
+
 	static string ReversWordsInString(string text)
 	{
 
@@ -421,11 +489,13 @@ public:
 		return text2;
 
 	}
+
 	void ReversWordsInString()
 	{
 		_Value = ReversWordsInString(_Value);
 	}
 
+	//_____________________________________________________________
 
 	static string ReplaceWordInString(string text, string StringToReplace, string sReplaceTo)
 	{
@@ -436,10 +506,13 @@ public:
 			pos = text.find(StringToReplace);
 		}
 	}
+
 	void ReplaceWordInString(string StringToReplace, string sReplaceTo)
 	{
 		_Value = ReplaceWordInString(_Value, StringToReplace, sReplaceTo);
 	}
+
+	//_____________________________________________________________
 
 	static string ReplaceWord(string S13, string StringToReplace, string sRepalceTo, bool MatchCase = true)
 	{
@@ -457,10 +530,13 @@ public:
 		}
 		return JoinString(vString, " ");
 	}
+
 	void ReplaceWords(string StringToReplace, string sRplaceTo, bool MatchCase = true)
 	{
 		_Value = ReplaceWord(_Value, StringToReplace, sRplaceTo, MatchCase);
 	}
+
+	//_____________________________________________________________
 
 	static string RemovePunctuations(string text)
 	{
@@ -474,6 +550,7 @@ public:
 		}
 		return S1;
 	}
+
 	void RemovePunctuations()
 	{
 		_Value = RemovePunctuations(_Value);
