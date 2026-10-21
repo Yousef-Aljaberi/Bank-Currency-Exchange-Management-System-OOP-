@@ -25,7 +25,7 @@ private:
     enum enMainMenueOptions {
         eListClients = 1, eAddNewClient = 2, eDeleteClient = 3,
         eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6,
-        eManageUsers = 7, eLoginRegister = 8, eCurrencyExchangeMen = 9, eExit = 10
+        eManageUsers = 7, eLoginRegister = 8, eCurrencyExchange = 9, eExit = 10
     };
 
     static short _ReadMainMenueOption()
@@ -153,7 +153,7 @@ private:
             _GoBackToMainMenue();
             break;
 
-        case enMainMenueOptions::eCurrencyExchangeMen:
+        case enMainMenueOptions::eCurrencyExchange:
             system("cls");
             _ShowCurrencyExchangeMeue();
             _GoBackToMainMenue();
