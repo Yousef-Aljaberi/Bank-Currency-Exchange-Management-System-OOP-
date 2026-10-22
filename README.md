@@ -152,7 +152,7 @@ Ensure you have a modern C++ compiler supporting **C++17** or higher installed o
 
 ---
 
-## 👤 Author & Professional Contact
+## 👤 Author
 
 <div align="center">
 
