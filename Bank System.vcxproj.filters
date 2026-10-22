@@ -157,5 +157,8 @@
     <ClInclude Include="clsFindCurrencyScreen.h">
       <Filter>Header Files\Screens\CurrencScreens</Filter>
     </ClInclude>
+    <ClInclude Include="clsUpdateCurrencyRateScreen.h">
+      <Filter>Header Files\Screens\CurrencScreens</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

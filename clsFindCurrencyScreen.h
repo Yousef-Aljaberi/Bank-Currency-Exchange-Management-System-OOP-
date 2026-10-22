@@ -6,7 +6,6 @@
 class clsFindCurrencyScreen :protected clsScreen
 {
 private:
-	enum enFindScreenOption { eByCode = 1, eByCountry = 2 };
 
 	static short _ReadFindScreenOptions()
 	{
@@ -20,7 +19,7 @@ private:
 		string CountryCode;
 
 		cout << "\nPlease Enter Currency Code? ";
-		cin >> CountryCode;
+		CountryCode = clsInputValidate::ReadString();
 
 		return clsCurrency::FindByCode(CountryCode);
 	}
@@ -29,21 +28,38 @@ private:
 	{
 		string CountryCode;
 
-		cout << "\nPlease Enter Currency Code? ";
-		cin >> CountryCode;
+		cout << "\nPlease Enter Currency Name? ";
+		CountryCode = clsInputValidate::ReadString();
 
 		return clsCurrency::FindByCountry(CountryCode);
 	}
 
 	static void _PrintCurrecyCard(clsCurrency Currency)
 	{
-		cout << "Currency Card:\n";
+		cout << "\nCurrency Card:\n";
 		cout << "__________________________________________\n";
 		cout << "\nCountry		: " << Currency.Country();
 		cout << "\nCode    	: " << Currency.CountryCode();
 		cout << "\nName    	: " << Currency.CurrencyName();
 		cout << "\nRate    	: " << Currency.Rate();
 		cout << "\n__________________________________________\n";
+	}
+
+	static void _ShowResults(clsCurrency Currency)
+	{
+		
+
+		if (!Currency.IsEmpty())
+		{
+			cout << "\nCurrency Found :-)\n";
+			_PrintCurrecyCard(Currency);
+		}
+
+		else
+		{
+			cout << "\nCurrency Was Not Found :-(\n";
+		}
+
 	}
 
 public:
@@ -56,7 +72,7 @@ public:
 
 		clsCurrency Currency = clsCurrency::GetEmptyObject();
 
-		if (chois == enFindScreenOption::eByCode)
+		if (chois == 1)
 		{
 			Currency = _FindByCode();
 		}
@@ -66,19 +82,10 @@ public:
 			Currency = _FindCountry();
 		}
 
-		if (!Currency.IsEmpty())
-		{
-			cout << "\nCurrency Found :-)\n";
-			_PrintCurrecyCard(Currency);
-		}
-
-		else
-		{
-			cout << "\nCurrency Not Found :-(\n";
-		}
-
+		_ShowResults(Currency);
 	
 		
 	}
+
 };
 

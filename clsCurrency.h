@@ -25,12 +25,12 @@ private:
 	 }
 	 static string _ConvertCurrencyObjectToDataLine(clsCurrency Currency, string Seprator = "#//#")
 	 {
-		 string CurrencyLine;
+		 string CurrencyLine = "";
 
-		 CurrencyLine = Currency.Country() + Seprator;
-		 CurrencyLine = Currency.CountryCode() + Seprator;
-		 CurrencyLine = Currency.CurrencyName() + Seprator;
-		 CurrencyLine = to_string(Currency.Rate());
+		 CurrencyLine += Currency.Country() + Seprator;
+		 CurrencyLine += Currency.CountryCode() + Seprator;
+		 CurrencyLine += Currency.CurrencyName() + Seprator;
+		 CurrencyLine += to_string(Currency.Rate());
 
 		 return CurrencyLine;
 	 }
@@ -72,6 +72,7 @@ private:
 			 for (clsCurrency C : Currencies)
 			 {
 				 CurrencyLine = _ConvertCurrencyObjectToDataLine(C);
+				 MyFile << CurrencyLine << endl;
 			 }
 		 }
 	 }
@@ -80,7 +81,7 @@ private:
 	 {
 		 vector<clsCurrency> vCurrencies = _LoadCurrencyDataFromFile();
 
-		 for (clsCurrency C : vCurrencies)
+		 for (clsCurrency& C : vCurrencies)
 		 {
 			 if (C.CountryCode() == CountryCode())
 			 {
