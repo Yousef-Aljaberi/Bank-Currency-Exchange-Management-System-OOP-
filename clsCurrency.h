@@ -11,7 +11,7 @@ private:
 	enMode _Mode;
 
 	string _Country;
-	string _CountryCode;
+	string _CurrencyCode;
 	string _CurrencyName;
 	 float _Rate;
 	 
@@ -28,7 +28,7 @@ private:
 		 string CurrencyLine = "";
 
 		 CurrencyLine += Currency.Country() + Seprator;
-		 CurrencyLine += Currency.CountryCode() + Seprator;
+		 CurrencyLine += Currency.CurrencyCode() + Seprator;
 		 CurrencyLine += Currency.CurrencyName() + Seprator;
 		 CurrencyLine += to_string(Currency.Rate());
 
@@ -83,7 +83,7 @@ private:
 
 		 for (clsCurrency& C : vCurrencies)
 		 {
-			 if (C.CountryCode() == CountryCode())
+			 if (C.CurrencyCode() == CurrencyCode())
 			 {
 				 C = *this;
 				 break;
@@ -91,13 +91,14 @@ private:
 		 }
 		 _SaveCurrencyDataToFile(vCurrencies);
 	 }
+
 public:
 
 	clsCurrency(enMode Mode, string Country, string CountryCode, string CurrencyName, float Rate)
 	{
 		_Mode = Mode;
 		_Country = Country;
-		_CountryCode = CountryCode;
+		_CurrencyCode = CountryCode;
 		_CurrencyName = CurrencyName;
 		_Rate = Rate;
 	}
@@ -112,9 +113,9 @@ public:
 		return _Country;
 	}
 
-	string CountryCode()
+	string CurrencyCode()
 	{
-		return _CountryCode;
+		return _CurrencyCode;
 	}
 	
 	string CurrencyName()
@@ -148,7 +149,7 @@ public:
 			{
 				clsCurrency Currency = _ConverCurrencyDataLineToObject(Line);
 
-				if (Currency.CountryCode() == CountryCode)
+				if (Currency.CurrencyCode() == CountryCode)
 				{
 					MyFile.close();
 					return Currency;
@@ -199,6 +200,23 @@ public:
 	static clsCurrency GetEmptyObject()
 	{
 		return _GetEmptyObject();
+	}
+
+	float ConvertToUSD(float Amount)
+	{
+		return (float)(Amount /Rate());
+	}
+
+	 float ConvertToOtherCurrency(float Amount, clsCurrency Currency2 )
+	{
+		float AmountInUSD = ConvertToUSD(Amount);
+
+		if (Currency2.CurrencyCode() == "USD")
+		{
+			return AmountInUSD;
+		}
+
+		return (float)(AmountInUSD * Currency2.Rate());
 	}
 };
 

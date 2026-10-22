@@ -11,25 +11,21 @@ class clsUpdateCurrencyRateScreen:protected clsScreen
 		cout << "\nCurrency Card:\n";
 		cout << "__________________________________________\n";
 		cout << "\nCountry		: " << Currency.Country();
-		cout << "\nCode    	: " << Currency.CountryCode();
+		cout << "\nCode    	: " << Currency.CurrencyCode();
 		cout << "\nName    	: " << Currency.CurrencyName();
 		cout << "\nRate    	: " << Currency.Rate();
 		cout << "\n__________________________________________\n";
 	}
 
-	static void _UpdateRate(clsCurrency &Currency)
+
+	static float _ReadRate()
 	{
 		float NewRate = 0;
 
-		cout << "\nUpdate Currency Rate:\n";
-		cout << "____________________________\n";
-
 		cout << "\nEnter New Rate: ";
-		cin >> NewRate;
-		
-		Currency.UpdateRate(NewRate);
+		NewRate = clsInputValidate::ReadFloatNumber();
 
-		cout << "\nCurrency Update Successfully :-)\n";
+		return NewRate;
 	}
 public:
 
@@ -44,7 +40,7 @@ public:
 
 		while (!clsCurrency::IsCurrencyExist(CountryCode))
 		{
-			cout << "\nCureency Code Not Found, Please choose anthor one ? ";
+			cout << "\nCureency is not found, Please choose anthor one ? ";
 			CountryCode = clsInputValidate::ReadString();
 		}
 
@@ -57,7 +53,12 @@ public:
 
 		if (answer == 'y' || answer == 'Y')
 		{
-			_UpdateRate(Currency);
+			cout << "\nUpdate Currency Rate:\n";
+			cout << "____________________________\n";
+
+			Currency.UpdateRate(_ReadRate());
+
+			cout << "\nCurrency Update Successfully :-)\n";
 			_PrintCurrecyCard(Currency);
 		}
 

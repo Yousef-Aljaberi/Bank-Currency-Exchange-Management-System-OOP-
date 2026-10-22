@@ -39,7 +39,7 @@ private:
 		cout << "\nCurrency Card:\n";
 		cout << "__________________________________________\n";
 		cout << "\nCountry		: " << Currency.Country();
-		cout << "\nCode    	: " << Currency.CountryCode();
+		cout << "\nCode    	: " << Currency.CurrencyCode();
 		cout << "\nName    	: " << Currency.CurrencyName();
 		cout << "\nRate    	: " << Currency.Rate();
 		cout << "\n__________________________________________\n";

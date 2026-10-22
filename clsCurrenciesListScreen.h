@@ -13,7 +13,7 @@ private:
 	static void _PrintCurrecyRecord(clsCurrency Currency)
 	{
 		cout << setw(8) << left << "" << "| " << setw(30) << left << Currency.Country();
-		cout << "| " << setw(8) << left << Currency.CountryCode();
+		cout << "| " << setw(8) << left << Currency.CurrencyCode();
 		cout << "| " << setw(45) << left << Currency.CurrencyName();
 		cout << "| " << setw(10) << left << Currency.Rate();
 	}

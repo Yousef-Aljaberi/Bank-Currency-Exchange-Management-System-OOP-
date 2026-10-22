@@ -34,7 +34,7 @@
     <Filter Include="Header Files\Core">
       <UniqueIdentifier>{422dfb82-bc62-4728-b16f-191942c83ff8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Screens\CurrencScreens">
+    <Filter Include="Header Files\Screens\CurrencyScreens">
       <UniqueIdentifier>{fa7ab7a5-3661-406d-b478-a40da7216886}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -143,7 +143,7 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="clsCurrencyMenue.h">
-      <Filter>Header Files\Screens\CurrencScreens</Filter>
+      <Filter>Header Files\Screens\CurrencyScreens</Filter>
     </ClInclude>
     <ClInclude Include="clsLoginScreen.h">
       <Filter>Header Files</Filter>
@@ -152,13 +152,16 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="clsCurrenciesListScreen.h">
-      <Filter>Header Files\Screens\CurrencScreens</Filter>
+      <Filter>Header Files\Screens\CurrencyScreens</Filter>
     </ClInclude>
     <ClInclude Include="clsFindCurrencyScreen.h">
-      <Filter>Header Files\Screens\CurrencScreens</Filter>
+      <Filter>Header Files\Screens\CurrencyScreens</Filter>
     </ClInclude>
     <ClInclude Include="clsUpdateCurrencyRateScreen.h">
-      <Filter>Header Files\Screens\CurrencScreens</Filter>
+      <Filter>Header Files\Screens\CurrencyScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="clsCurrencyCalculaterScreen.h">
+      <Filter>Header Files\Screens\CurrencyScreens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
