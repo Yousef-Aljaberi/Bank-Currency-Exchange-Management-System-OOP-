@@ -16,7 +16,6 @@ private:
 		cout << "| " << setw(8) << left << Currency.CountryCode();
 		cout << "| " << setw(45) << left << Currency.CurrencyName();
 		cout << "| " << setw(10) << left << Currency.Rate();
-		cout << endl;
 	}
 public:
 	static void ShowCurrenciesListScreen()
@@ -46,6 +45,7 @@ public:
 			for (clsCurrency C : vCurrencies)
 			{
 				_PrintCurrecyRecord(C);
+				cout << endl;
 			}
 		}
 

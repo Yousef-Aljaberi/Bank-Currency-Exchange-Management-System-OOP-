@@ -195,6 +195,9 @@ public:
 		return _LoadCurrencyDataFromFile();
 	}
 
-
+	static clsCurrency GetEmptyObject()
+	{
+		return _GetEmptyObject();
+	}
 };
 
