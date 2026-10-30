@@ -20,9 +20,9 @@
 
 ## 🌟 Executive Overview
 
-Welcome to the **Bank Management & Currency Exchange System**, a sophisticated multi-module C++ solution engineered for high reliability, clean architectural separation, and seamless user interaction. Built entirely from scratch using robust **Object-Oriented Programming (OOP)** principles, this project unifies secure retail banking operations and multi-currency exchange management into a single, cohesive console application.
+Welcome to the **Bank Management & Currency Exchange System**! This project is a comprehensive C++ console application developed as part of my programming journey to apply Object-Oriented Programming (OOP) concepts, clean code practices, and modular system design.
 
-Designed with scalability in mind, every screen, business rule, and data model is isolated into clean, reusable classes. It serves as an exemplary showcase of modern C++ system design, data validation, and custom string parsing without external dependencies.
+The core idea was to build a complete financial management system from scratch—combining secure bank account operations with a multi-currency conversion engine—without relying on external libraries or databases. Every screen, business rule, and data model is organized into clean, reusable classes.
 
 ---
 
@@ -30,42 +30,38 @@ Designed with scalability in mind, every screen, business rule, and data model i
 
 ### 1. 🏦 Bank Management System (BMS)
 
-A comprehensive backend-style banking administrative engine designed to manage high-integrity client accounts, granular user security permissions, and core ledger transactions.
+A structured console module designed to manage client accounts, operator permissions, and core banking transactions securely.
 
-- **Client Portfolio Control:** Complete CRUD operations (Create, Read, Update, Delete) with instant account balance tracking.
-- **Financial Ledger Transactions:** Secure processing for deposits, withdrawals, and multi-account fund transfers with complete historical auditing.
-- **Granular Role & Access Control (RBAC):** Bitmask-style permission flags allowing administrators to configure custom access levels for individual system operators.
-- **Activity & Audit Logging:** Automatic recording of login attempts (`LoginRegister.txt`) and transfer histories (`TransferLog.txt`) for complete operational transparency.
+- **Client Account Management:** Full CRUD operations (Create, Read, Update, Delete) with direct account balance tracking.
+- **Financial Transactions:** Secure processing for deposits, withdrawals, and multi-account fund transfers with historical auditing.
+- **User Permissions & Access Control:** Role-based permission system allowing administrators to configure access levels for system operators.
+- **Activity & Audit Logging:** Automatic recording of login sessions (`LoginRegister.txt`) and transfer histories (`TransferLog.txt`).
 
-**Key Structural Modules:**
+**Key Classes:**
 
-- `clsBankClient.h` — Core client entity handling validation, balance alterations, and record serialization.
-- `clsUser.h` — Operator credential management, authentication, and access permission matrices.
-- `clsMainScreen.h` & Associated `cls*Screen.h` — Modular routing screens for menus, client lookup, and transactional workflows.
+- `clsCurrency.h` — Currency data model, search algorithms, and cross-rate calculation logic.
+- `clsCurrencyMenue.h` — Centralized navigation hub for currency tools.
+- `Currencies.txt` — Pre-seeded flat-file dataset containing global exchange rates.
+- 
+### 2. 💱 Currency Exchange System
 
----
+A dedicated financial module built to manage global currencies, lookup exchange rates, and compute cross-currency conversions using USD as a standard base.
 
-### 2. 💱 Currency Exchange & Management System
+- **Currencies Directory:** Displays formatted lists of global currencies, ISO codes, country names, and exchange rates (`clsCurrenciesListScreen.h`).
+- **Flexible Search Engine:** Instant lookup by Currency Code (e.g., `EUR`, `GBP`) or Country Name (`clsFindCurrencyScreen.h`).
+- **Rate Updating:** Administrative tool to modify and persist exchange rates (`clsUpdateCurrencyRateScreen.h`).
+- **Currency Calculator:** Converts amounts between any two global currencies using USD as an intermediary base.
 
-An advanced financial conversion module capable of querying global currencies, adjusting live valuation rates, and executing cross-currency computations relative to USD.
-
-- **Currencies Listing Matrix:** Renders beautifully formatted tabular data detailing countries, ISO currency codes, human-readable names, and base conversion rates against 1 USD (`clsCurrenciesListScreen.h`).
-- **Multi-Parameter Search Engine:** Instant lookup mechanism supporting queries by unique Currency Code (e.g., `EUR`, `GBP`, `JPY`) or full Country Name (`clsFindCurrencyScreen.h`).
-- **Dynamic Rate Updating:** Secure administrative override capability to modify live currency exchange rates with instant file persistence (`clsUpdateCurrencyRateScreen.h`).
-- **Cross-Currency Exchange Calculator:** Intelligent calculation pipeline routing all conversions through USD as an intermediary base currency to compute accurate values between any two global assets (`clsCurrencyCalculaterScreen.h`).
-
-**The Conversion Logic Formula:**
-The system uses USD as the universal pivot currency to derive calculations:
+**Conversion Logic Formula:**
+The system uses USD as the base currency to derive calculations:
 $$\text{Target Amount} = \left(\frac{\text{Source Amount}}{\text{Source Rate}}\right) \times \text{Target Rate}$$
 
-**Key Structural Modules:**
+**Key Classes:**
 
-- `clsCurrency.h` — Core currency model housing serialization logic, search algorithms, and cross-rate math.
-- `clsCurrencyMenue.h` — Centralized navigation hub routing users seamlessly across conversion tools.
-- `Currencies.txt` — Pre-seeded flat-file database populated with extensive global exchange statistics.
-
----
-
+- `clsCurrency.h` — Currency data model, search algorithms, and cross-rate calculation logic.
+- `clsCurrencyMenue.h` — Centralized navigation hub for currency tools.
+- `Currencies.txt` — Pre-seeded flat-file dataset containing global exchange rates.
+- 
 ## 🏗️ Architecture & Design Patterns
 
 The codebase adheres strictly to enterprise-level separation of concerns, ensuring that user interface logic remains entirely decoupled from core business execution and data storage layers.
@@ -95,7 +91,7 @@ The codebase adheres strictly to enterprise-level separation of concerns, ensuri
 ### Core Design Principles
 
 - **Encapsulation:** State variables and operational methods are tightly bound within respective domain classes.
-- **Inheritance & Polymorphism:** User interfaces inherit shared layout rendering mechanisms from a robust base class (`clsScreen.h`).
+- **Inheritance :** User interfaces inherit shared layout rendering mechanisms from a robust base class (`clsScreen.h`).
 - **Centralized Data Sanitization:** All user inputs are rigorously verified via `clsInputValidate` to mitigate invalid states, range errors, and buffer corruption.
 
 ---
@@ -137,19 +133,6 @@ Ensure you have a modern C++ compiler supporting **C++17** or higher installed o
    - Verify that all required `.txt` data files reside within the working execution directory.
    - Build the solution (`Ctrl + Shift + B`) and launch the application (`F5`).
 
-3. **Terminal Compilation (GCC Example):**
-   ```bash
-   g++ -std=c++17 *.cpp -o BankSystem
-   ./BankSystem
-   ```
-
----
-
-## 🔐 Security & Production Disclaimer
-
-- **Data Security:** Flat-file data persistence is structured primarily for performance, learning, and architectural elegance. Production deployment demands standard relational or NoSQL database implementation with encrypted storage.
-- **Financial Calculations:** Currency rates are stored locally and initialized via dataset files; verify real-time market feeds externally before running production-level monetary transactions.
-
 ---
 
 ## 👤 Author
@@ -158,7 +141,6 @@ Ensure you have a modern C++ compiler supporting **C++17** or higher installed o
 
 ### **Yousif Aljaberi**
 
-_Software Developer_
 
 [![GitHub](https://img.shields.io/badge/GitHub-Yousef--Aljaberi-181717?style=for-the-badge&logo=github)](https://github.com/Yousef-Aljaberi)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Yousif%20Aljaberi-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/yousif-aljaberi-004278408/)
@@ -166,9 +148,3 @@ _Software Developer_
 </div>
 
 ---
-
-<div align="center">
-
-**Powered by robust C++ • Delivering clean, modular, and object-oriented software**
-
-</div>
